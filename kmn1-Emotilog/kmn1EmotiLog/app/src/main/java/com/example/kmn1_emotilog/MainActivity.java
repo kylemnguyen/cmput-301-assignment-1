@@ -52,7 +52,7 @@ import java.util.ArrayList;
         String[] description = { "Happy", "Meh", "Sad", "Angry", "penit", "meow"};
 
         summary = new UserLog();
-
+        TextView title = findViewById(R.id.title_text);
         dataList = new ArrayList<Emotion>();
         for (int i = 0; i < emoji.length; i++) {
             dataList.add(new Emotion(emoji[i], description[i]));
@@ -134,6 +134,9 @@ import java.util.ArrayList;
             goBackBtn.setVisibility(VISIBLE);
             indepthSummary.setVisibility(VISIBLE);
 
+            title.setText("Emotion Frequency");
+
+
 
         });
 
@@ -147,15 +150,25 @@ import java.util.ArrayList;
             goBackBtn.setVisibility(View.GONE);
             indepthSummary.setVisibility(View.GONE);
 
+            title.setText("How are you feeling?");
+
+
         });
 
         indepthSummary.setOnClickListener(v -> {
+
+            userSummary.setVisibility(VISIBLE);
+            indepthSummary.setVisibility(View.GONE);
+
             if(!summary.getSummaryIndepth().isEmpty()){
                 dailySummaryText.setText(summary.getSummaryIndepth());
 
             } else {
                 dailySummaryText.setText("No emotions have been logged today.");
             }
+
+            title.setText("Indepth Event Log");
+
         });
 
 
