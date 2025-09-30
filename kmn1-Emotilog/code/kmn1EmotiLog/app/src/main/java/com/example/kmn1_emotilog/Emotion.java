@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 public class Emotion implements Serializable {
 
+
+//    Basic emotion class object that holds its emoticon and description
     private String emoji;
     private String description;
     public Emotion(String emoji, String desc) {
@@ -13,8 +15,7 @@ public class Emotion implements Serializable {
         this.description = desc;
 
     }
-
-
+// Basic getters and setters vvv
     public String getDescription() {
         return description;
     }

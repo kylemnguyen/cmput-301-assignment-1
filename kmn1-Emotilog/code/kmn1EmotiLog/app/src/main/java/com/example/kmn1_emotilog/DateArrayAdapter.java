@@ -10,16 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.kmn1_emotilog.Emotion;
-import com.example.kmn1_emotilog.R;
-
 import java.util.ArrayList;
 
-public class EmotionArrayAdapter extends ArrayAdapter<Emotion> {
-    public EmotionArrayAdapter(Context context, ArrayList<Emotion> cities) {
-        super(context, 0, cities);
+public class DateArrayAdapter extends ArrayAdapter<CurrentDate> {
+    public DateArrayAdapter(Context context, ArrayList<CurrentDate> calendar) {
+        super(context, 0, calendar);
     }
 
+
+//    vv this is the adapter that sets up the gridview for the the calendar
 
     @NonNull
     @Override
@@ -28,21 +27,20 @@ public class EmotionArrayAdapter extends ArrayAdapter<Emotion> {
 
 
         if (convertView == null) {
-            view = LayoutInflater.from(getContext()).inflate(R.layout.content,
+            view = LayoutInflater.from(getContext()).inflate(R.layout.date_layout,
                     parent, false);
         } else {
             view = convertView;
         }
 
 
-        Emotion city = getItem(position);
-        TextView cityName = view.findViewById(R.id.emotion_emoji);
-        TextView provinceName = view.findViewById(R.id.emotion_description);
-        cityName.setText(city.getEmoji());
-        provinceName.setText(city.getDescription());
+        CurrentDate day = getItem(position);
+        TextView currentDayAndMonth = view.findViewById(R.id.day_and_month);
+        TextView currentYear = view.findViewById(R.id.year);
+        currentDayAndMonth.setText(day.getDate());
+        currentYear.setText(day.getYear());
         return view;
 
 
     }
 }
-

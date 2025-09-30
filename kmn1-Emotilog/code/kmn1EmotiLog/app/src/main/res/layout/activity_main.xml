@@ -10,9 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="45dp"
-        android:padding="10dp"
+        android:background="@color/purple"
+        android:textColor="@color/white"
+        android:paddingTop="40dp"
+        android:paddingBottom="15dp"
         android:text="How are you feeling?"
         android:textAlignment="center"
         android:textSize="35sp"
@@ -33,11 +34,22 @@
     <GridView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:numColumns="7"
+        android:background="@color/light_purple"
+        android:gravity="center_vertical"
+        android:stretchMode="columnWidth"
+        android:id="@+id/calendar_of_week"
+        android:layout_marginBottom="15dp"/>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:numColumns="3"
         android:gravity="center_vertical"
         android:stretchMode="columnWidth"
         android:id="@+id/emotion_list"
-        android:layout_margin="25dp"/>
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="15dp"/>
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton

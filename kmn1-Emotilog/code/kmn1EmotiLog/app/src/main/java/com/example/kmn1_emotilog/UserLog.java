@@ -12,7 +12,14 @@ import java.util.Map;
 
 public class UserLog {
 
+//    This is a userLog object that stores all emoticons that has been clicked
+//    It also creates two version of summaries, one that showcases the frequency and one that shows the full indepth analysis
+//    It has a changeable currentdate to have a correct display of emoticons that wer clicked on the selected day
+
+
+//    Hash map of the frequencies of all emoticons clicked (no matter the date)
     private Map<String, Integer> userSummary;
+//    ArrayLst of every logged emoticon
     private ArrayList<LoggedEmotion> userLog;
 
     private String currentDay;
@@ -22,6 +29,8 @@ public class UserLog {
         userLog = new ArrayList<>();
     }
 
+
+//    Adds the emoticon clicked to the hashmap and the arraylists
     public void addEmotionToLog(LoggedEmotion le) {
 
         if(!userSummary.containsKey(le.getEmotionName())) {
@@ -39,22 +48,10 @@ public class UserLog {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void showSummary() {
-        for(LoggedEmotion e: userLog) {
-            System.out.println(e.toString());
-        }
-        for(Map.Entry<String, Integer> entry: userSummary.entrySet()) {
-            System.out.println("Logged " + entry.getKey() + ": " + entry.getValue() + " time(s).");
-        }
-    }
+//    vv This is a frequency summary of emoticons clicked on the specified date.
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String getSummary() {
-
-        setCurrentDay();
-        System.out.println("THE CURRENT DATE IS: " + currentDay);
-
         Map<String, Integer> currentSummary = new HashMap<>();
 
 
@@ -88,12 +85,11 @@ public class UserLog {
 
     }
 
+
+//    vv Indepth summary of all events of emoticon click with corresponding date
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String getSummaryIndepth() {
 
-
-        setCurrentDay();
-        System.out.println("THE CURRENT DATE IS: " + currentDay);
 
         String s = "";
         for(LoggedEmotion e : userLog) {
@@ -105,11 +101,21 @@ public class UserLog {
         return s;
     }
 
+//    Sets the currentDate on the day application is openeed
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void setCurrentDay() {
         LocalDateTime tempDay = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         currentDay = tempDay.format(myFormatObj);
+    }
+
+//    Resets date for prior events
+
+    public void setDate(String d) {
+        this.currentDay = d;
+    }
+    public String getCurrentDay() {
+        return this.currentDay;
     }
 
 

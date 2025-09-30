@@ -25,7 +25,7 @@ import androidx.fragment.app.DialogFragment;
 
 public class editEmotion extends DialogFragment {
 
-
+//This class creates a dialog fragment that adds functionality to edit emoticons the user has on the screen
 
     interface EditEmotionDialogListener {
         void editEmotion(Emotion emotion);
@@ -33,6 +33,8 @@ public class editEmotion extends DialogFragment {
     private EditEmotionDialogListener listener;
 
     private Emotion selectedEmotion;
+
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -43,7 +45,7 @@ public class editEmotion extends DialogFragment {
             throw new RuntimeException(context + " must implement EditEmotionDialogListener");
         }
     }
-
+//    Dialog listener
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -55,7 +57,7 @@ public class editEmotion extends DialogFragment {
         }
 
 
-
+//    Gets the values of the current emoji that was clicked from the bundle
 
 
         EditText editEmoji = view.findViewById(R.id.edit_text_emotion);
@@ -74,7 +76,7 @@ public class editEmotion extends DialogFragment {
                 .setPositiveButton("Change", (dialog, which) -> {
 
 
-
+//Sets the new values up.
                     selectedEmotion.setEmoji(editEmoji.getText().toString());
                     selectedEmotion.setDescription(editDesc.getText().toString());
 

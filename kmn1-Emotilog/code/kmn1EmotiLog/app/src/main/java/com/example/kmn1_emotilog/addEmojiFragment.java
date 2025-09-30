@@ -16,6 +16,8 @@ import com.example.kmn1_emotilog.Emotion;
 import com.example.kmn1_emotilog.R;
 
 public class addEmojiFragment extends DialogFragment {
+
+//    Extension of a DialogFragments that add new emoticons to the gridView
     interface AddEmotionDialogListener {
         void addEmotion(Emotion emotion);
     }
