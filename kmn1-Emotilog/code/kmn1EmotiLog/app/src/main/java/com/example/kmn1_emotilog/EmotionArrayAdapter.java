@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class EmotionArrayAdapter extends ArrayAdapter<Emotion> {
 //    This is a an array adapter class that sets up the gridview of the emoticons the user has made
-    public EmotionArrayAdapter(Context context, ArrayList<Emotion> cities) {
-        super(context, 0, cities);
+    public EmotionArrayAdapter(Context context, ArrayList<Emotion> emotions) {
+        super(context, 0, emotions);
     }
 
 
@@ -34,7 +34,6 @@ public class EmotionArrayAdapter extends ArrayAdapter<Emotion> {
         } else {
             view = convertView;
         }
-
 
         Emotion city = getItem(position);
         TextView cityName = view.findViewById(R.id.emotion_emoji);

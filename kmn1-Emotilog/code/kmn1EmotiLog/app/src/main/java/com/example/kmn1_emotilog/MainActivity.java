@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,10 +98,39 @@ import java.util.ArrayList;
         for (int i = -6; i <= 0; i++) { // This sets days from 6 days prior to present and adds them to the ArrayList
 
             String tempDate = String.valueOf(dayOf + i);
-            tempDate = tempDate + "-" + formattedDate[1];
+
+            if(Integer.parseInt(tempDate) <= 0) {
+
+                int monthDays;
+
+// vvvvvvvvvvvvvvvvvvvvvvvvvvvv forgive me vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+                switch(Integer.parseInt(formattedDate[1])) {
+                    case 2:
+                        monthDays = 28;
+                        break;
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        monthDays = 30;
+                        break;
+                    default:
+                        monthDays = 31;
+                        break;
+                }
+// ^^^^^^^^^^^^^^^^^^^^ forgive me ^^^^^^^^^^^^^^^^^^^^^^^^^^ please bro
+
+                tempDate = String.valueOf(monthDays + i);
+                tempDate = tempDate + "-" + String.valueOf(Integer.parseInt(formattedDate[1]) - 1);
+
+
+            } else {
+                tempDate = tempDate + "-" + formattedDate[1];
+            }
 
             calendarList.add(new CurrentDate(tempDate, formattedDate[2]));
         }
+
 
         weekCalendar = findViewById(R.id.calendar_of_week);
         weekCalendarAdapter = new DateArrayAdapter(this, calendarList);
@@ -114,6 +144,8 @@ import java.util.ArrayList;
 
                 CurrentDate selectedDate = (CurrentDate) parent.getItemAtPosition(position);
                 summary.setDate(selectedDate.toString());
+                Toast toast = Toast.makeText(getApplicationContext(), "The date is now: " + selectedDate.toString(), Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 

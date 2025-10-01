@@ -5,18 +5,22 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class LoggedEmotion {
 //This class creates an object of a emoticon that was clicked and saves the date of when its clicked.
     private Emotion emotion;
     private String timeStamp;
+    private LocalTime hms;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     LoggedEmotion(Emotion e, String t) {
         this.emotion = e;
         this.timeStamp = t;
+        this.hms = LocalTime.now();
     }
 
 //    Basic getters and setters
@@ -38,6 +42,8 @@ public class LoggedEmotion {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public String toString() {
-        return "Logged " + emotion.getDescription() + " at " + timeStamp;
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String hmsTime = hms.format(myFormatObj);
+        return "Logged " + emotion.getDescription() + " on " + timeStamp + " at " + hmsTime;
     }
 }
