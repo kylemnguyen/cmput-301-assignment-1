@@ -52,6 +52,7 @@ public class UserLog {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String getSummary() {
+
         Map<String, Integer> currentSummary = new HashMap<>();
 
 
@@ -69,11 +70,9 @@ public class UserLog {
                     currentSummary.put(e.getEmotionName(), value);
 
                 }
-
             }
 
         }
-
 
         String s = "";
         for(Map.Entry<String, Integer> entry: currentSummary.entrySet()) {

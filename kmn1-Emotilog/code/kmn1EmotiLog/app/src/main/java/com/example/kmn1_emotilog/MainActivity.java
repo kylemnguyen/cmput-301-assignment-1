@@ -67,7 +67,7 @@ import java.util.ArrayList;
 //        Preset Emojis
 
         String[] emoji = { ":)", ":|", ":(" , ">:(", "8=D", ":3"};
-        String[] description = { "Happy", "Meh", "Sad", "Angry", "penit", "meow"};
+        String[] description = { "Happy", "Meh", "Sad", "Angry", "Distraught", "Meow"};
 
 
 //Create a new users log & set up title

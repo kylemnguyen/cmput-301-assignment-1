@@ -44,6 +44,6 @@ public class LoggedEmotion {
     public String toString() {
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("HH:mm:ss");
         String hmsTime = hms.format(myFormatObj);
-        return "Logged " + emotion.getDescription() + " on " + timeStamp + " at " + hmsTime;
+        return "Logged " + emotion.getEmoji() + " on " + timeStamp + " at " + hmsTime;
     }
 }
